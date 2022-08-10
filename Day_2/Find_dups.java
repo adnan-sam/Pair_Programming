@@ -50,11 +50,8 @@ public class Find_dups {
     // Approach 2 - Using Sorting and comparing the next element O(N log N) + O(N) [Something is wrong here]
     static ArrayList<Integer> duplicates2(int[] arr, int n) {
         ArrayList<Integer> res=new ArrayList<>();
-        //Base case below
-        if(arr.length<=1 || arr==null) {
-            res.add(-1);
-            return res;
-        }
+        // {1,4,2,3,2,3}
+        //1 2 2 2 2 3 3 4
         Arrays.sort(arr);
         int i=1,j=0;
         while(i<n) {
@@ -79,6 +76,8 @@ public class Find_dups {
             res.add(-1);
             return res;
         }
+        // {1,4,2,3,2,3}
+        //1 2 2 2 2 3 3 4
         Arrays.sort(arr);
         int lo=0,hi=n-1;
         int i=1,j=n-2;
