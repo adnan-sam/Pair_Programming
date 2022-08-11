@@ -21,6 +21,13 @@ public class Product_array {
         for(int ele:ans2)
         System.out.print(ele+" ");
         System.out.println();
+
+        // We have to reinitialise nums as in the above call nums has been changed
+        int[] nums2={5,2,2,4}; //Output should be - {16,40,40,20};
+        int[] ans3=productExceptSelf(nums2);
+        for(int ele:ans3)
+        System.out.print(ele+" ");
+        System.out.println();
     }
     //Brute Force Approach [O(N^2)]
     static int[] productExceptSelf_BruteForce(int[] arr) {
@@ -46,6 +53,43 @@ public class Product_array {
         }
         for(int i=0;i<arr.length;i++) {
             arr[i]=totalPro/arr[i];
+        }
+        return arr;
+    }
+    //Optimal Approach which LeetCode wants, T.C - O(N) || S.C - O(2N)
+
+/** Create two arrays leftPro and rightPro which will be storing the left product
+ * and right product of the elements till ith index respectively.
+ * Traverse the array and store arr[i] = leftPro[i-1] * rightPro[i+1];
+ * This will take O(N) time and hence we are not creating any extra array for storing the output so though we are creating
+ * leftPro and rightPro so we can say that we are using O(N) space bt still it get's neglected as in the Problem statement
+ * it is mentioned that they are providing us with O(N) space for storing the output and hence we are utilising it in leftPro
+ * and rightPro arrays so we can assume that it is taking O(1) space. */
+
+    static int[] productExceptSelf(int[] arr) {
+        int[] leftPro = new int[arr.length];
+        int[] rightPro = new int[arr.length];
+        int pro=1;
+        for(int i=0;i<arr.length;i++) {
+            pro*=arr[i];
+            leftPro[i]=pro;
+        }
+        pro=1;
+        for(int i=arr.length-1;i>=0;i--) {
+            pro*=arr[i];
+            rightPro[i]=pro;
+        }
+        //Let's fill the outputs in the same array arr
+        for(int i=0;i<arr.length;i++) {
+            if(i==0) {
+                arr[i] = rightPro[i+1];
+            }
+            else if(i==arr.length-1) {
+                arr[i] = leftPro[i-1];
+            }
+            else {
+                arr[i] = leftPro[i-1]*rightPro[i+1];
+            }
         }
         return arr;
     }
