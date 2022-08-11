@@ -24,11 +24,19 @@ public class Product_array {
 
         // We have to reinitialise nums as in the above call nums has been changed
         int[] nums2={5,2,2,4}; //Output should be - {16,40,40,20};
-        int[] ans3=productExceptSelf(nums2);
+        int[] ans3=productExceptSelf_1(nums2);
         for(int ele:ans3)
         System.out.print(ele+" ");
         System.out.println();
+
+        // We have to reinitialise nums as in the above call nums has been changed
+        int[] nums3={5,2,2,4}; //Output should be - {16,40,40,20};
+        int[] ans4=productExceptSelf_1(nums3);
+        for(int ele:ans4)
+        System.out.print(ele+" ");
+        System.out.println();
     }
+
     //Brute Force Approach [O(N^2)]
     static int[] productExceptSelf_BruteForce(int[] arr) {
         int[] ans= new int[arr.length];
@@ -66,7 +74,7 @@ public class Product_array {
  * it is mentioned that they are providing us with O(N) space for storing the output and hence we are utilising it in leftPro
  * and rightPro arrays so we can assume that it is taking O(1) space. */
 
-    static int[] productExceptSelf(int[] arr) {
+    static int[] productExceptSelf_1(int[] arr) {
         int[] leftPro = new int[arr.length];
         int[] rightPro = new int[arr.length];
         int pro=1;
@@ -92,5 +100,27 @@ public class Product_array {
             }
         }
         return arr;
+    }
+    /** Optimal Approach 2 -
+
+The procedure is same as above but here we are creating only 1 left array and updating it using a cumulative product variable. */
+    public int[] productExceptSelf_2(int[] arr) {
+        int[] leftPro = new int[arr.length];
+        int[] rightPro = new int[arr.length];
+        int pro=1;
+        // Filling leftPro array
+        for(int i=0;i<arr.length;i++) {
+            pro*=arr[i];
+            leftPro[i]=pro;
+        }
+        //Let's fill the outputs in the same array arr
+        pro=1;
+        for(int i=arr.length-1;i>0;i--) {
+                leftPro[i] = leftPro[i-1]*pro;
+                pro*=arr[i];
+        }
+        leftPro[0]=pro;
+        
+        return leftPro;
     }
 }
