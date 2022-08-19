@@ -1,4 +1,4 @@
-package Pair_Programming.Day_1;
+package Day_1;
 
 public class Sort012 {
     public static void main(String[] args) {

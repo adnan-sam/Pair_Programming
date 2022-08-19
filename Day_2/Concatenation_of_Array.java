@@ -1,4 +1,4 @@
-package Pair_Programming.Day_2;
+package Day_2;
 
 public class Concatenation_of_Array {
     public static void main(String[] args) {

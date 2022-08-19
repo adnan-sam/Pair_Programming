@@ -1,4 +1,4 @@
-package Pair_Programming.Day_3;
+package Day_3;
 
 // 238. Product of Array Except Self
 /** Problem Statement -

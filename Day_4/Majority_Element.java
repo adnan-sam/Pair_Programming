@@ -1,4 +1,4 @@
-package GeeksForGeeks;
+package Day_4;
 
 import java.util.HashMap;
 import java.util.Scanner;

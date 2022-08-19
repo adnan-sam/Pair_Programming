@@ -1,4 +1,4 @@
-package Pair_Programming.Day_2;
+package Day_2;
 
 import java.util.ArrayList;
 import java.util.Arrays;

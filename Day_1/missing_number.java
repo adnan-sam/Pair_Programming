@@ -1,4 +1,4 @@
-package Pair_Programming.Day_1;
+package Day_1;
 import java.util.Arrays;
 
 public class missing_number {
